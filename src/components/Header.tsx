@@ -18,7 +18,7 @@ const Header = () => {
   const navItems = [
     { name: "O nas", href: "#o-nas" },
     { name: "Zajęcia", href: "#zajecia" },
-    { name: "Grafik i cennik", href: "#cennik" },
+    { name: "Zapisy online", href: "#grafik-interaktywny" },
     { name: "Opinie", href: "#opinie" },
     { name: "Galeria", href: "#galeria" },
     { name: "Aktualności", href: "#aktualnosci" },
@@ -39,15 +39,15 @@ const Header = () => {
             <span>Szkółka Pływania</span>
           </a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-base font-medium"
+                className="text-foreground hover:text-primary transition-base font-semibold relative group"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-base" />
               </a>
             ))}
           </nav>
@@ -55,7 +55,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Button
-              className="water-gradient hover:shadow-medium transition-base"
+              className="water-gradient hover:shadow-glow transition-bounce shadow-medium hover:scale-105"
               asChild
             >
               <a href="#kontakt">Zapisz się</a>
