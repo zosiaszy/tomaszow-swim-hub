@@ -4,18 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     parentName: "",
     childName: "",
@@ -24,17 +19,15 @@ const Contact = () => {
     phone: "",
     classType: "",
     message: "",
-    consent: false,
+    consent: false
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!formData.consent) {
       toast({
         title: "Błąd",
         description: "Musisz wyrazić zgodę na przetwarzanie danych osobowych.",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -42,7 +35,7 @@ const Contact = () => {
     // Here would be the actual form submission logic
     toast({
       title: "Zgłoszenie wysłane!",
-      description: "Skontaktujemy się z Tobą w ciągu 24 godzin.",
+      description: "Skontaktujemy się z Tobą w ciągu 24 godzin."
     });
 
     // Reset form
@@ -54,12 +47,10 @@ const Contact = () => {
       phone: "",
       classType: "",
       message: "",
-      consent: false,
+      consent: false
     });
   };
-
-  return (
-    <section id="kontakt" className="py-20 bg-muted/30">
+  return <section id="kontakt" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -81,74 +72,51 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <Label htmlFor="parentName">Imię i nazwisko rodzica *</Label>
-                  <Input
-                    id="parentName"
-                    value={formData.parentName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, parentName: e.target.value })
-                    }
-                    required
-                  />
+                  <Input id="parentName" value={formData.parentName} onChange={e => setFormData({
+                  ...formData,
+                  parentName: e.target.value
+                })} required />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="childName">Imię dziecka</Label>
-                    <Input
-                      id="childName"
-                      value={formData.childName}
-                      onChange={(e) =>
-                        setFormData({ ...formData, childName: e.target.value })
-                      }
-                    />
+                    <Input id="childName" value={formData.childName} onChange={e => setFormData({
+                    ...formData,
+                    childName: e.target.value
+                  })} />
                   </div>
                   <div>
                     <Label htmlFor="childAge">Wiek dziecka</Label>
-                    <Input
-                      id="childAge"
-                      type="number"
-                      value={formData.childAge}
-                      onChange={(e) =>
-                        setFormData({ ...formData, childAge: e.target.value })
-                      }
-                    />
+                    <Input id="childAge" type="number" value={formData.childAge} onChange={e => setFormData({
+                    ...formData,
+                    childAge: e.target.value
+                  })} />
                   </div>
                 </div>
 
                 <div>
                   <Label htmlFor="email">E-mail *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                  />
+                  <Input id="email" type="email" value={formData.email} onChange={e => setFormData({
+                  ...formData,
+                  email: e.target.value
+                })} required />
                 </div>
 
                 <div>
                   <Label htmlFor="phone">Telefon *</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    required
-                  />
+                  <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData({
+                  ...formData,
+                  phone: e.target.value
+                })} required />
                 </div>
 
                 <div>
                   <Label htmlFor="classType">Typ zajęć</Label>
-                  <Select
-                    value={formData.classType}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, classType: value })
-                    }
-                  >
+                  <Select value={formData.classType} onValueChange={value => setFormData({
+                  ...formData,
+                  classType: value
+                })}>
                     <SelectTrigger>
                       <SelectValue placeholder="Wybierz rodzaj zajęć" />
                     </SelectTrigger>
@@ -165,25 +133,17 @@ const Contact = () => {
 
                 <div>
                   <Label htmlFor="message">Wiadomość</Label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    rows={4}
-                    placeholder="Dodatkowe informacje lub pytania..."
-                  />
+                  <Textarea id="message" value={formData.message} onChange={e => setFormData({
+                  ...formData,
+                  message: e.target.value
+                })} rows={4} placeholder="Dodatkowe informacje lub pytania..." />
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="consent"
-                    checked={formData.consent}
-                    onCheckedChange={(checked) =>
-                      setFormData({ ...formData, consent: checked as boolean })
-                    }
-                  />
+                  <Checkbox id="consent" checked={formData.consent} onCheckedChange={checked => setFormData({
+                  ...formData,
+                  consent: checked as boolean
+                })} />
                   <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
                     Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z{" "}
                     <a href="/polityka-prywatnosci" className="text-primary hover:underline">
@@ -193,11 +153,7 @@ const Contact = () => {
                   </Label>
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full water-gradient hover:shadow-medium transition-base"
-                >
+                <Button type="submit" size="lg" className="w-full water-gradient hover:shadow-medium transition-base">
                   <Send className="mr-2 h-5 w-5" />
                   Wyślij zgłoszenie
                 </Button>
@@ -220,10 +176,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground mb-1">Telefon</div>
-                    <a
-                      href="tel:+48123456789"
-                      className="text-muted-foreground hover:text-primary transition-base"
-                    >
+                    <a href="tel:+48123456789" className="text-muted-foreground hover:text-primary transition-base">
                       +48 123 456 789
                     </a>
                   </div>
@@ -235,10 +188,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground mb-1">E-mail</div>
-                    <a
-                      href="mailto:kontakt@szkolka-plywania.pl"
-                      className="text-muted-foreground hover:text-secondary transition-base"
-                    >
+                    <a href="mailto:kontakt@szkolka-plywania.pl" className="text-muted-foreground hover:text-secondary transition-base">
                       kontakt@szkolka-plywania.pl
                     </a>
                   </div>
@@ -263,20 +213,10 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div className="bg-card rounded-xl p-4 shadow-soft">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                  <p>Mapa Google Maps</p>
-                  <p className="text-sm mt-1">(iframe do osadzenia)</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
