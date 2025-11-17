@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Waves } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/NavLink";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,9 +35,8 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 text-primary font-bold text-xl group">
-            <Waves className="h-8 w-8 group-hover:scale-110 transition-base" />
-            <span>Szkółka Pływania</span>
+          <a href="#" className="flex items-center group">
+            <img src={logo} alt="Sport Kids - Nauka Pływania" className="h-12 md:h-16 group-hover:scale-105 transition-base" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
